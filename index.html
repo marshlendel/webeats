@@ -9,6 +9,7 @@
   </head>
   <body>
     <div class="sequencer">
+
       <div class="kick-track">
         <div class="controls">
           <h1>Kick</h1>
@@ -39,7 +40,7 @@
           <button data-track="1" class="mute snare-volume">
             <i class="fas fa-volume-mute"></i>
           </button>
-          <select name="snare-select" id="sanre-select">
+          <select name="snare-select" id="snare-select">
             <option value="./sounds/snare-acoustic02.wav">
               Acoustic Snare
             </option>
@@ -57,6 +58,7 @@
           <div class="pad snare-pad b6"></div>
           <div class="pad snare-pad b7"></div>
         </div>
+      </div>
 
         <div class="hihat-track">
           <div class="controls">
@@ -73,7 +75,7 @@
               <option value="./sounds/hihat-digital.wav">Digital Hihat</option>
             </select>
           </div>
-          <div class="snare">
+          <div class="hihat">
             <div class="pad hihat-pad b0"></div>
             <div class="pad hihat-pad b1"></div>
             <div class="pad hihat-pad b2"></div>
@@ -84,9 +86,9 @@
             <div class="pad hihat-pad b7"></div>
           </div>
         </div>
-      </div>
+        <button class="play">Play</button>
+
     </div>
-    <button class="play">Play</button>
     <audio src="./sounds/kick-acoustic01.wav" class="kick-sound"></audio>
     <audio src="./sounds/snare-acoustic01.wav" class="snare-sound"></audio>
     <audio src="./sounds/hihat-acoustic01.wav" class="hihat-sound"></audio>
