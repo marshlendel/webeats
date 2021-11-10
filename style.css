@@ -81,6 +81,10 @@ i, svg {
     margin: 0rem 0.5rem;
 }
 
+.mute.active {
+    background-color: slategray;
+}
+
 .play {
     padding: 1rem 2rem;
     font-size: 1.5rem;
