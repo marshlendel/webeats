@@ -72,14 +72,16 @@ class Drumkit {
   }
 
   changeSound(e) {
-    if (e.target.id === "kick-select") {
-      this.kickAudio.src = e.target.value;
-    }
-    if (e.target.id === "snare-select") {
-      this.snareAudio.src = e.target.value;
-    }
-    if (e.target.id === "hihat-select") {
-      this.hihatAudio.src = e.target.value;
+    switch (e.target.id) {
+      case "kick-select":
+        this.kickAudio.src = e.target.value;
+        break;
+      case "snare-select":
+        this.snareAudio.src = e.target.value;
+        break;
+      case "hihat-select":
+        this.hihatAudio.src = e.target.value;
+        break;
     }
   }
 }
