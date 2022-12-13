@@ -132,7 +132,7 @@ class WebBeat {
   }
 
   start() {
-    const interval = (60 / this.bpm) * 1000;
+    const interval = (this.bpm / 60) * 1000;
     //Checks to see if the tracks are playing
     if (!this.isPlaying) {
       //Sets the property from null to the random number returned by setInterval.
