@@ -6,6 +6,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  background: #c7c7c7
 }
 
 i,
@@ -19,6 +20,8 @@ svg {
   margin: 1rem 0.5rem;
   cursor: pointer;
   transition: all 0.5s ease;
+  position: relative;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.26);
 }
 
 .hihat-pad {
