@@ -14,59 +14,61 @@ class WebBeat {
   }
 
   changeSound(e) {
-    switch (e.target.id) {
+    const selectionName = e.target;
+    switch (selectionName.id) {
       case "hihat-select":
-        this.hihatAudio.src = e.target.value;
+        this.hihatAudio.src = selectionName.value;
         break;
       case "snare-select":
-        this.snareAudio.src = e.target.value;
+        this.snareAudio.src = selectionName.value;
         break;
       case "kick-select":
-        this.kickAudio.src = e.target.value;
+        this.kickAudio.src = selectionName.value;
         break;
       case "crash-select":
-        this.crashAudio.src = e.target.value;
+        this.crashAudio.src = selectionName.value;
         break;
     }
   }
 
   muteSound(e) {
-    switch (e.target.classList[1]) {
+    const button = e.target;
+    switch (button.classList[1]) {
       case "hihat-volume":
         if (this.hihatAudio.muted === false) {
           this.hihatAudio.muted = true;
-          e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+          button.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
         } else {
           this.hihatAudio.muted = false;
-          e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+          button.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
         }
         break;
       case "snare-volume":
         if (this.snareAudio.muted === false) {
-            this.snareAudio.muted = true;
-            e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
-          } else {
-            this.snareAudio.muted = false;
-            e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
-          }
+          this.snareAudio.muted = true;
+          e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+        } else {
+          this.snareAudio.muted = false;
+          e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+        }
         break;
       case "kick-volume":
         if (this.kickAudio.muted === false) {
-            this.kickAudio.muted = true;
-            e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
-          } else {
-            this.kickAudio.muted = false;
-            e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
-          }
+          this.kickAudio.muted = true;
+          e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+        } else {
+          this.kickAudio.muted = false;
+          e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+        }
         break;
       case "crash-volume":
         if (this.crashAudio.muted === false) {
-            this.crashAudio.muted = true;
-            e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
-          } else {
-            this.crashAudio.muted = false;
-            e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
-          }
+          this.crashAudio.muted = true;
+          e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+        } else {
+          this.crashAudio.muted = false;
+          e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+        }
         break;
     }
   }
@@ -117,8 +119,8 @@ class WebBeat {
     //Checks to see if the tracks are playing
     if (!this.isPlaying) {
       //Sets the property from null to the random number returned by setInterval.
+      this.playButton.innerText = "Pause";
       this.isPlaying = setInterval(() => {
-        this.playButton.innerText = "Pause";
         this.iterateTracks();
       }, interval);
     } else {
