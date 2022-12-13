@@ -8,9 +8,26 @@ class WebBeat {
     this.kickAudio = document.querySelector(".kick-sound");
     this.crashAudio = document.querySelector(".crash-sound");
     this.muteButtons = document.querySelectorAll(".mute");
+    this.tempoSlider = document.querySelector("#tempo-slider");
+    this.tempoNumber = document.querySelector(".tempo-number");
     this.index = 0;
     this.bpm = 150;
     this.isPlaying = null;
+  }
+
+  changeTempo(e) {
+    const inputValue = e.target.value;
+    this.bpm = inputValue;
+    this.tempoNumber.innerText = inputValue;
+  }
+
+  updateIntervalTempo() {
+    //If it's playing, staps the current play interval and starts a new one
+    if (this.playButton.innerText === "Pause") {
+      clearInterval(this.isPlaying);
+      this.isPlaying = null;
+      this.start();
+    }
   }
 
   changeSound(e) {
@@ -155,4 +172,12 @@ webBeat.muteButtons.forEach((button) => {
 
 webBeat.playButton.addEventListener("click", () => {
   webBeat.start();
+});
+
+webBeat.tempoSlider.addEventListener("input", function (e) {
+  webBeat.changeTempo(e);
+});
+
+webBeat.tempoSlider.addEventListener("change", function (e) {
+  webBeat.updateIntervalTempo();
 });

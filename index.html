@@ -12,7 +12,7 @@
       <div class="hihat-track">
         <div class="controls">
           <h1>Hi-hat</h1>
-          <button data-track="0" class="mute hihat-volume">
+          <button class="mute hihat-volume">
             <i class="fa-solid fa-volume-high"></i>
           </button>
           <select name="hihat-select" id="hihat-select">
@@ -46,7 +46,7 @@
       <div class="snare-track">
         <div class="controls">
           <h1>Snare</h1>
-          <button data-track="0" class="mute snare-volume">
+          <button class="mute snare-volume">
             <i class="fa-solid fa-volume-high"></i>
           </button>
           <select name="snare-select" id="snare-select">
@@ -80,7 +80,7 @@
       <div class="kick-track">
         <div class="controls">
           <h1>Kick</h1>
-          <button data-track="0" class="mute kick-volume">
+          <button class="mute kick-volume">
             <i class="fa-solid fa-volume-high"></i>
           </button>
           <select name="kick-select" id="kick-select">
@@ -112,7 +112,7 @@
       <div class="crash-track">
         <div class="controls">
           <h1>Crash</h1>
-          <button data-track="0" class="mute crash-volume">
+          <button class="mute crash-volume">
             <i class="fa-solid fa-volume-high"></i>
           </button>
           <select name="crash-select" id="crash-select">
@@ -142,6 +142,17 @@
         </div>
       </div>
       <button class="play">Play</button>
+      <div class="tempo-container">
+        <input
+          type="range"
+          name="temp"
+          id="tempo-slider"
+          max="300"
+          min="20"
+          value="150"
+        />
+        <p>Tempo: <span class="tempo-number">150</span> BPM</p>
+      </div>
     </div>
     <audio src="./sounds/hihat-acoustic01.wav" class="hihat-sound"></audio>
     <audio src="./sounds/snare-acoustic01.wav" class="snare-sound"></audio>

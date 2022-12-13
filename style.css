@@ -68,7 +68,7 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .hihat-pads,
@@ -84,7 +84,7 @@ svg {
   align-items: center;
   flex: 1;
   justify-content: space-between;
-  width: 20rem;
+  width: 25rem;
   margin-right: 2rem;
 }
 
@@ -92,7 +92,6 @@ svg {
   padding: 1rem;
   border: none;
   background: gray;
-  margin: 0 2rem;
   color: white;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -105,13 +104,34 @@ svg {
   color: white;
   border: none;
   cursor: pointer;
-  margin: 2rem;
+  margin-top: 3rem;
   transition: all 0.5s ease;
 }
 
 .controls button:hover,
 .play:hover {
   background: rgb(100, 100, 100);
+}
+
+.tempo-container {
+  margin: 1rem;
+  width: 30%;
+  text-align: center;
+}
+
+#tempo-slider {
+  padding: 0.2rem;
+  position: relative;
+  color: white;
+  border-radius: 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.tempo p {
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 select {
