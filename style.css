@@ -106,6 +106,12 @@ svg {
   border: none;
   cursor: pointer;
   margin: 2rem;
+  transition: all 0.5s ease;
+}
+
+.controls button:hover,
+.play:hover {
+  background: rgb(100, 100, 100);
 }
 
 select {
@@ -113,8 +119,8 @@ select {
   font-size: 1rem;
 }
 
-@keyframes playTrack{
-  from{
+@keyframes playTrack {
+  from {
     transform: scale(1);
   }
   to {

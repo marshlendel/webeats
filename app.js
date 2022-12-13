@@ -7,8 +7,10 @@ class WebBeat {
     this.snareAudio = document.querySelector(".snare-sound");
     this.kickAudio = document.querySelector(".kick-sound");
     this.crashAudio = document.querySelector(".crash-sound");
+    this.muteButtons = document.querySelectorAll(".mute");
     this.index = 0;
     this.bpm = 150;
+    this.isPlaying = null;
   }
 
   changeSound(e) {
@@ -28,12 +30,55 @@ class WebBeat {
     }
   }
 
-  activePad() {
+  muteSound(e) {
+    switch (e.target.classList[1]) {
+      case "hihat-volume":
+        if (this.hihatAudio.muted === false) {
+          this.hihatAudio.muted = true;
+          e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+        } else {
+          this.hihatAudio.muted = false;
+          e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+        }
+        break;
+      case "snare-volume":
+        if (this.snareAudio.muted === false) {
+            this.snareAudio.muted = true;
+            e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+          } else {
+            this.snareAudio.muted = false;
+            e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+          }
+        break;
+      case "kick-volume":
+        if (this.kickAudio.muted === false) {
+            this.kickAudio.muted = true;
+            e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+          } else {
+            this.kickAudio.muted = false;
+            e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+          }
+        break;
+      case "crash-volume":
+        if (this.crashAudio.muted === false) {
+            this.crashAudio.muted = true;
+            e.target.innerHTML = `<i class="fa-solid fa-volume-xmark"></i>`;
+          } else {
+            this.crashAudio.muted = false;
+            e.target.innerHTML = `<i class="fa-solid fa-volume-high"></i>`;
+          }
+        break;
+    }
+  }
+
+  activatePad() {
     this.classList.toggle("active");
   }
 
-  repeat() {
+  iterateTracks() {
     let step = this.index % 16;
+
+    //collects and assigns the current pads based on the step
     const activePads = document.querySelectorAll(`.b${step}`);
 
     //loop over the current pad in the track for each drum part
@@ -45,15 +90,21 @@ class WebBeat {
         switch (pad.classList[1]) {
           case "hihat-pad":
             this, this.hihatAudio.play();
+            this.hihatAudio.currentTime = 0;
             break;
           case "snare-pad":
             this, this.snareAudio.play();
+            this.snareAudio.currentTime = 0;
             break;
           case "kick-pad":
             this, this.kickAudio.play();
+            this.kickAudio.currentTime = 0;
+
             break;
           case "crash-pad":
             this, this.crashAudio.play();
+            this.crashAudio.currentTime = 0;
+
             break;
         }
       }
@@ -63,16 +114,26 @@ class WebBeat {
 
   start() {
     const interval = (60 / this.bpm) * 1000;
-    setInterval(() => {
-      this.repeat();
-    }, interval);
+    //Checks to see if the tracks are playing
+    if (!this.isPlaying) {
+      //Sets the property from null to the random number returned by setInterval.
+      this.isPlaying = setInterval(() => {
+        this.playButton.innerText = "Pause";
+        this.iterateTracks();
+      }, interval);
+    } else {
+      //clear the interval using the id that was set by the interval
+      this.playButton.innerText = "Play";
+      clearInterval(this.isPlaying);
+      this.isPlaying = null;
+    }
   }
 }
 
 const webBeat = new WebBeat();
 
 webBeat.pads.forEach((pad) => {
-  pad.addEventListener("click", webBeat.activePad);
+  pad.addEventListener("click", webBeat.activatePad);
   pad.addEventListener("animationend", function () {
     this.style.animation = "";
   });
@@ -83,6 +144,13 @@ webBeat.selectors.forEach((selector) => {
     webBeat.changeSound(e);
   });
 });
+
+webBeat.muteButtons.forEach((button) => {
+  button.addEventListener("click", function (e) {
+    webBeat.muteSound(e);
+  });
+});
+
 webBeat.playButton.addEventListener("click", () => {
   webBeat.start();
 });
